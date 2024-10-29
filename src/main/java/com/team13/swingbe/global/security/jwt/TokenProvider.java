@@ -81,17 +81,4 @@ public class TokenProvider {
             throw new HttpException(HttpStatus.FORBIDDEN, "알 수 없는 토큰입니다.");
         }
     }
-
-    public Boolean validateToken(String token){
-        byte[] keyBytes = Base64.getEncoder().encode(secretKey.getBytes());
-        SecretKey signingKey = Keys.hmacShaKeyFor(keyBytes);
-
-        return Jwts.parser()
-                .verifyWith(signingKey)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload()
-                .getExpiration()
-                .before(new Date());
-    }
 }

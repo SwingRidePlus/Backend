@@ -18,9 +18,15 @@ public class AuthController {
     private final SignupService signupService;
     private final SigninService signinService;
 
-    @PostMapping("/signup")
-    public ResponseEntity<TokenResponse> signup(@RequestBody @Valid SignupRequest request) {
-        TokenResponse response = signupService.signup(request);
+    @PostMapping("/signup/user")
+    public ResponseEntity<TokenResponse> signupUser(@RequestBody @Valid SignupRequest request) {
+        TokenResponse response = signupService.signupUser(request);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/signup/taxi")
+    public ResponseEntity<TokenResponse> signupTaxi(@RequestBody @Valid SignupRequest request) {
+        TokenResponse response = signupService.signupTaxi(request);
         return ResponseEntity.ok(response);
     }
 
