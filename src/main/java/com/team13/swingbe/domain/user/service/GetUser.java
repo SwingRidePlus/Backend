@@ -16,7 +16,7 @@ public class GetUser {
 
     @Transactional
     public User getCurrentUser() {
-        return userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName())
+        return userRepository.findByNumber(SecurityContextHolder.getContext().getAuthentication().getName())
                 .orElseThrow(() -> new HttpException(HttpStatus.NOT_FOUND, "해당 유저를 찾을 수 없습니다."));
     }
 }

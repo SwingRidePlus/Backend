@@ -14,9 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SignupRequest {
     @NotBlank
-    @Email
-    @Column()
-    private String email;
+    private String number;
 
     @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

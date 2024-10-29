@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SigninRequest {
     @NotBlank
-    private String email;
+    private String number;
 
     @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

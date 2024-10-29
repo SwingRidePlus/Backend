@@ -1,6 +1,7 @@
 package com.team13.swingbe.domain.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.team13.swingbe.domain.reservation.entity.Reservation;
 import com.team13.swingbe.global.auth.StringListConverter;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,9 +21,14 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    private String email;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
 
     private String name;
+
+    private String number;
+
+    private String gender;
 
     private String age;
 
