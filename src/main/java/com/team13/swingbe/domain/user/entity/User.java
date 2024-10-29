@@ -32,6 +32,8 @@ public class User {
 
     private String age;
 
+    private String carNumber;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 

@@ -22,6 +22,7 @@ public class Reservation {
 
     private String origin;
     private String destination;
+    private String date;
     private String time;
     private String charge;
     private String personnel;

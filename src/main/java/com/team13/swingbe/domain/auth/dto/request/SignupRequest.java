@@ -24,5 +24,8 @@ public class SignupRequest {
     private String name;
 
     @NotBlank
+    private String gender;
+
+    @NotBlank
     private String age;
 }
