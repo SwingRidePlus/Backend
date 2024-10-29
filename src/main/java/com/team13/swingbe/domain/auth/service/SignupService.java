@@ -21,12 +21,11 @@ public class SignupService {
 
     @Transactional
     public TokenResponse signup(SignupRequest request) {
-        if(userRepository.existsUserByEmail(request.getEmail()))
+        if(userRepository.existsUserByNumber(request.getNumber()))
             throw new HttpException(HttpStatus.BAD_REQUEST, "이미 해당 이름을 사용하는 멤버가 존재합니다.");
         User user = User.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .email(request.getEmail())
                 .age(request.getAge())
                 .roles(List.of(Role.ROLE_USER))
                 .build();

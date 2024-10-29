@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByEmail(String email);
+    Optional<User> findByNumber(String number);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    boolean existsUserByEmail(String email);
+    boolean existsUserByNumber(String number);
 }
