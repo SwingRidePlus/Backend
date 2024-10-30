@@ -28,6 +28,7 @@ public class ReservationService {
                 .request(request.getRequest())
                 .user(user)
                 .date(request.getDate())
+                .isCall(false)
                 .build();
 
         reservationRepository.save(reservation);
@@ -37,15 +38,23 @@ public class ReservationService {
         User user = getUser.getCurrentUser();
         List<Reservation> reservations = reservationRepository.findAllByUser(user);
 
+
         return reservations.stream()
-                .map(reservation -> ReservationDateResponse.builder()
-                        .id(reservation.getId())
-                        .date(reservation.getDate())
-                        .charge(reservation.getCharge())
-                        .time(reservation.getTime())
-                        .origin(reservation.getOrigin())
-                        .destination(reservation.getDestination())
-                        .build())
+                .map(reservation -> {
+                    String driverName = (reservation.getDriver() != null) ? reservation.getDriver().getName() : "없음";
+                    String carNumber = (reservation.getDriver() != null) ? reservation.getDriver().getCarNumber() : "없음";
+                    return ReservationDateResponse.builder()
+                            .id(reservation.getId())
+                            .date(reservation.getDate())
+                            .charge(reservation.getCharge())
+                            .time(reservation.getTime())
+                            .origin(reservation.getOrigin())
+                            .destination(reservation.getDestination())
+                            .isCall(reservation.getIsCall())
+                            .driver(driverName)
+                            .carNumber(carNumber)
+                            .build();
+                })
                 .collect(Collectors.toList());
     }
 
@@ -53,5 +62,15 @@ public class ReservationService {
         Reservation reservation = reservationRepository.findById(id).orElseThrow();
         reservation.changeCharge(charge);
         reservationRepository.save(reservation);
+    }
+
+    public void deleteReservation(Long id) {
+        User user = getUser.getCurrentUser();
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        if (reservation.getUser().getName().equals(user.getName())) {
+            reservationRepository.delete(reservation);
+        }
+        else
+            throw new RuntimeException();
     }
 }
