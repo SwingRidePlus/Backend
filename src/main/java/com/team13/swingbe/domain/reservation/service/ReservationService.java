@@ -8,8 +8,6 @@ import com.team13.swingbe.domain.user.entity.User;
 import com.team13.swingbe.domain.user.service.GetUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,15 +33,15 @@ public class ReservationService {
         reservationRepository.save(reservation);
     }
 
-    public List<ReservationDateResponse> reservationDate(String localDate) {
+    public List<ReservationDateResponse> reservationDate() {
         User user = getUser.getCurrentUser();
-        List<Reservation> reservations = reservationRepository.findByDateAndUser(localDate, user);
+        List<Reservation> reservations = reservationRepository.findAllByUser(user);
 
         return reservations.stream()
                 .map(reservation -> new ReservationDateResponse(
                         reservation.getId(),
-                        localDate.toString(),
-                        reservation.getTime().toString(),
+                        reservation.getDate(),
+                        reservation.getTime(),
                         reservation.getOrigin(),
                         reservation.getDestination()
                 ))

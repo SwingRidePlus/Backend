@@ -22,8 +22,8 @@ public class ReservationController {
     }
 
     @GetMapping("/reservation")
-    public List<ReservationDateResponse> reservationsDate(@RequestParam("date") String date) {
-        return reservationService.reservationDate(date);
+    public List<ReservationDateResponse> reservationsDate() {
+        return reservationService.reservationDate();
     }
 
     @PatchMapping("/reservation/price/{id}")
