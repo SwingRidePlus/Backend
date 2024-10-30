@@ -37,7 +37,7 @@ public class ReservationService {
 
     public List<ReservationDateResponse> reservationDate(LocalDate localDate) {
         User user = getUser.getCurrentUser();
-        List<Reservation> reservations = reservationRepository.findByDateAndUserId(localDate, user.getId());
+        List<Reservation> reservations = reservationRepository.findByDateAndUser(localDate, user);
 
         return reservations.stream()
                 .map(reservation -> new ReservationDateResponse(
