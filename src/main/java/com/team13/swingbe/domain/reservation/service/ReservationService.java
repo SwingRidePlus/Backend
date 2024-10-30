@@ -49,4 +49,10 @@ public class ReservationService {
                 ))
                 .collect(Collectors.toList());
     }
+
+    public void updateCharge(Long id, String charge) {
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        reservation.changeCharge(charge);
+        reservationRepository.save(reservation);
+    }
 }

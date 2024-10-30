@@ -26,4 +26,8 @@ public class ReservationController {
         return reservationService.reservationDate(date);
     }
 
+    @PatchMapping("/reservation/price/{id}")
+    public void updateCharge(@PathVariable Long id, @RequestParam("charge") String charge) {
+        reservationService.updateCharge(id, charge);
+    }
 }
