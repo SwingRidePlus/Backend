@@ -29,6 +29,7 @@ public class ReservationService {
                 .time(request.getTime())
                 .request(request.getRequest())
                 .user(user)
+                .date(LocalDate.now().toString())
                 .build();
 
         reservationRepository.save(reservation);
