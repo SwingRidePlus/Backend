@@ -17,6 +17,6 @@ public class UserController {
     @GetMapping("/my-info")
     public UserInfoResponse getUserInfo() {
         User user = getUser.getCurrentUser();
-        return new UserInfoResponse(user.getName(), user.getNumber());
+        return new UserInfoResponse(user.getName(), user.getNumber(), user.getRoles().get(0).toString());
     }
 }
