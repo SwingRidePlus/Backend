@@ -29,6 +29,7 @@ public class SignupService {
                 .number(request.getNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .age(request.getAge())
+                .gender(request.getGender())
                 .roles(List.of(Role.ROLE_USER))
                 .build();
         userRepository.save(user);
@@ -44,8 +45,9 @@ public class SignupService {
                 .number(request.getNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .age(request.getAge())
+                .gender(request.getGender())
                 .carNumber(request.getCarNumber())
-                .roles(List.of(Role.ROLE_ADMIN))
+                .roles(List.of(Role.ROLE_TAXI))
                 .build();
         userRepository.save(user);
         return null;

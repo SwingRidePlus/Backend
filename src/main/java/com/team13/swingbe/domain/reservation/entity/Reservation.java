@@ -36,4 +36,9 @@ public class Reservation {
     public void changeCharge(String charge) {
         this.charge = charge;
     }
+
+    public void call(Boolean isCall, User driver) {
+        this.isCall = isCall;
+        this.driver = driver;
+    }
 }
