@@ -41,6 +41,7 @@ public class ReservationService {
                 .map(reservation -> new ReservationDateResponse(
                         reservation.getId(),
                         reservation.getDate(),
+                        reservation.getCharge(),
                         reservation.getTime(),
                         reservation.getOrigin(),
                         reservation.getDestination()

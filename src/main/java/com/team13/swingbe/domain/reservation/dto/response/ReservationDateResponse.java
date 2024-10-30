@@ -10,4 +10,5 @@ public class ReservationDateResponse {
     private String time;
     private String origin;
     private String destination;
+    private String charge;
 }
