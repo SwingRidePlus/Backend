@@ -38,14 +38,14 @@ public class ReservationService {
         List<Reservation> reservations = reservationRepository.findAllByUser(user);
 
         return reservations.stream()
-                .map(reservation -> new ReservationDateResponse(
-                        reservation.getId(),
-                        reservation.getDate(),
-                        reservation.getCharge(),
-                        reservation.getTime(),
-                        reservation.getOrigin(),
-                        reservation.getDestination()
-                ))
+                .map(reservation -> ReservationDateResponse.builder()
+                        .id(reservation.getId())
+                        .date(reservation.getDate())
+                        .charge(reservation.getCharge())
+                        .time(reservation.getTime())
+                        .origin(reservation.getOrigin())
+                        .destination(reservation.getDestination())
+                        .build())
                 .collect(Collectors.toList());
     }
 
