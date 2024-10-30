@@ -37,4 +37,15 @@ public class CallService {
         reservation.call(true, user);
         reservationRepository.save(reservation);
     }
+
+    public void callCancle(Long id) {
+        User user = getUser.getCurrentUser();
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        if (reservation.getDriver().getCarNumber().equals(user.getCarNumber())) {
+            reservation.call(false, null);
+            reservationRepository.save(reservation);
+        }
+        else
+            throw new RuntimeException();
+    }
 }
