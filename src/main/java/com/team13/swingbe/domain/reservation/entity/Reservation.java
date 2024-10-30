@@ -27,4 +27,8 @@ public class Reservation {
     private String charge;
     private String personnel;
     private String request;
+
+    public void changeCharge(String charge) {
+        this.charge = charge;
+    }
 }

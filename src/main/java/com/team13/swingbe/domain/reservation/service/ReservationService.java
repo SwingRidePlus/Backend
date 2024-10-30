@@ -41,11 +41,18 @@ public class ReservationService {
 
         return reservations.stream()
                 .map(reservation -> new ReservationDateResponse(
+                        reservation.getId(),
                         localDate.toString(),
                         reservation.getTime().toString(),
                         reservation.getOrigin(),
                         reservation.getDestination()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    public void updateCharge(Long id, String charge) {
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        reservation.changeCharge(charge);
+        reservationRepository.save(reservation);
     }
 }
