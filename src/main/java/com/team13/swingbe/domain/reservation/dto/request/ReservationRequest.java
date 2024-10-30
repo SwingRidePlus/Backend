@@ -14,6 +14,8 @@ public class ReservationRequest {
 
     private String destination;
 
+    private String date;
+
     private String time;
 
     private String charge;
