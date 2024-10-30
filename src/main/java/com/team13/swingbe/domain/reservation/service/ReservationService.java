@@ -35,7 +35,7 @@ public class ReservationService {
         reservationRepository.save(reservation);
     }
 
-    public List<ReservationDateResponse> reservationDate(LocalDate localDate) {
+    public List<ReservationDateResponse> reservationDate(String localDate) {
         User user = getUser.getCurrentUser();
         List<Reservation> reservations = reservationRepository.findByDateAndUser(localDate, user);
 

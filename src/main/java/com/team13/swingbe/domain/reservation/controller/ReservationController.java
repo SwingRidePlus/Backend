@@ -23,8 +23,7 @@ public class ReservationController {
 
     @GetMapping("/reservation")
     public List<ReservationDateResponse> reservationsDate(@RequestParam("date") String date) {
-        LocalDate localDate = LocalDate.parse(date);
-        return reservationService.reservationDate(localDate);
+        return reservationService.reservationDate(date);
     }
 
 }
