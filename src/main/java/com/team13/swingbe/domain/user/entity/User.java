@@ -24,6 +24,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
+    private List<Reservation> call;
+
     private String name;
 
     private String number;

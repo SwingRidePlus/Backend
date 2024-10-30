@@ -20,6 +20,10 @@ public class Reservation {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private User driver;
+
     private String origin;
     private String destination;
     private String date;
