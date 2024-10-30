@@ -31,6 +31,7 @@ public class Reservation {
     private String charge;
     private String personnel;
     private String request;
+    private Boolean isCall;
 
     public void changeCharge(String charge) {
         this.charge = charge;

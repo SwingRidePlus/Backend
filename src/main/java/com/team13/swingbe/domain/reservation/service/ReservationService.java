@@ -28,6 +28,7 @@ public class ReservationService {
                 .request(request.getRequest())
                 .user(user)
                 .date(request.getDate())
+                .isCall(false)
                 .build();
 
         reservationRepository.save(reservation);
@@ -45,6 +46,7 @@ public class ReservationService {
                         .time(reservation.getTime())
                         .origin(reservation.getOrigin())
                         .destination(reservation.getDestination())
+                        .isCall(reservation.getIsCall())
                         .build())
                 .collect(Collectors.toList());
     }

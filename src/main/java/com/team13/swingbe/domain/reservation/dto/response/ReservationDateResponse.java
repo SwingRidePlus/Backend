@@ -13,4 +13,5 @@ public class ReservationDateResponse {
     private String origin;
     private String destination;
     private String charge;
+    private Boolean isCall;
 }

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class CallService {
     private final ReservationRepository reservationRepository;
     public List<CallsResponse> calls() {
-        List<Reservation> reservations = reservationRepository.findAll();
+        List<Reservation> reservations = reservationRepository.findAllByIsCallFalse();
 
         return reservations.stream()
                 .map(reservation -> CallsResponse.builder()
@@ -27,6 +27,5 @@ public class CallService {
                         .build())
                 .collect(Collectors.toList());
     }
-
 
 }
