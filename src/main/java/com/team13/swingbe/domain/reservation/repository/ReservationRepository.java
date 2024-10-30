@@ -13,4 +13,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     @Query("SELECT r FROM Reservation r WHERE r.isCall = false")
     List<Reservation> findAllByIsCallFalse();
+
+    List<Reservation> findAllByDriverId(Long driver);
 }

@@ -1,6 +1,7 @@
 package com.team13.swingbe.domain.driver.controller;
 
 import com.team13.swingbe.domain.driver.dto.response.CallsResponse;
+import com.team13.swingbe.domain.driver.dto.response.MyCallsResponse;
 import com.team13.swingbe.domain.driver.service.CallService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,11 @@ public class DriverController {
     @GetMapping("/calls")
     public List<CallsResponse> calls() {
         return callService.calls();
+    }
+
+    @GetMapping("/mycall")
+    public List<MyCallsResponse> myCalls() {
+        return callService.myCalls();
     }
 
     @PostMapping("/call/{id}")

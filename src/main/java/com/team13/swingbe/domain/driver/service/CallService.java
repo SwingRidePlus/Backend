@@ -1,6 +1,7 @@
 package com.team13.swingbe.domain.driver.service;
 
 import com.team13.swingbe.domain.driver.dto.response.CallsResponse;
+import com.team13.swingbe.domain.driver.dto.response.MyCallsResponse;
 import com.team13.swingbe.domain.reservation.entity.Reservation;
 import com.team13.swingbe.domain.reservation.repository.ReservationRepository;
 import com.team13.swingbe.domain.user.entity.User;
@@ -47,5 +48,21 @@ public class CallService {
         }
         else
             throw new RuntimeException();
+    }
+
+    public List<MyCallsResponse> myCalls() {
+        User user = getUser.getCurrentUser();
+        List<Reservation> reservations = reservationRepository.findAllByDriverId(user.getId());
+
+        return reservations.stream()
+                .map(reservation -> MyCallsResponse.builder()
+                        .id(reservation.getId())
+                        .date(reservation.getDate())
+                        .charge(reservation.getCharge())
+                        .time(reservation.getTime())
+                        .origin(reservation.getOrigin())
+                        .destination(reservation.getDestination())
+                        .build())
+                .collect(Collectors.toList());
     }
 }
