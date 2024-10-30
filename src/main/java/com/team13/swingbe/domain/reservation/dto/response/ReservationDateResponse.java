@@ -5,6 +5,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ReservationDateResponse {
+    private Long id;
     private String date;
     private String time;
     private String origin;

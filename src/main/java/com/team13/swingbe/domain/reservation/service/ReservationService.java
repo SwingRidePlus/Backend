@@ -41,6 +41,7 @@ public class ReservationService {
 
         return reservations.stream()
                 .map(reservation -> new ReservationDateResponse(
+                        reservation.getId(),
                         localDate.toString(),
                         reservation.getTime().toString(),
                         reservation.getOrigin(),
