@@ -63,4 +63,14 @@ public class ReservationService {
         reservation.changeCharge(charge);
         reservationRepository.save(reservation);
     }
+
+    public void deleteReservation(Long id) {
+        User user = getUser.getCurrentUser();
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        if (reservation.getUser().getName().equals(user.getName())) {
+            reservationRepository.delete(reservation);
+        }
+        else
+            throw new RuntimeException();
+    }
 }

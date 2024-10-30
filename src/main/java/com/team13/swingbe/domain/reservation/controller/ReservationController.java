@@ -14,7 +14,7 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @PostMapping("/reservation")
-    public void Reservation(@RequestBody @Valid ReservationRequest request) {
+    public void reservation(@RequestBody @Valid ReservationRequest request) {
         reservationService.reservation(request);
     }
 
@@ -26,5 +26,10 @@ public class ReservationController {
     @PatchMapping("/reservation/price/{id}")
     public void updateCharge(@PathVariable Long id, @RequestParam("charge") String charge) {
         reservationService.updateCharge(id, charge);
+    }
+
+    @DeleteMapping("/reservation/{id}")
+    public void deleteReservation(@PathVariable Long id) {
+        reservationService.deleteReservation(id);
     }
 }
